@@ -22,7 +22,7 @@ fxMenuItem first("First");
 
 void setup() {
   lcd.begin();
-  mainmenu->add(first);
+  mainmenu->add(&first);
   nav->setMenu(mainmenu);
 }
 ```
