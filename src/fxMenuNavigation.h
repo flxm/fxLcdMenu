@@ -13,6 +13,7 @@ public:
   fxMenuNav(LiquidCrystal_I2C& lcd);
   void setAnim(bool on);
   void setAnimDelay(byte ms);
+  void setSkipDisabled(bool on);
 
   void up();
   void down();
@@ -34,6 +35,7 @@ protected:
 
   bool anim;
   byte animdelay;
+  bool skipDisabled;
   
   fxMenuList* prev;
   byte prevpos;

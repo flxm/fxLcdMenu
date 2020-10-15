@@ -3,11 +3,13 @@
 /**
  * Menu Navigation Controller
  */
-fxMenuNav::fxMenuNav(LiquidCrystal_I2C& lcd) : lcd(lcd), anim(false), animdelay(30), focus(true) { }
+fxMenuNav::fxMenuNav(LiquidCrystal_I2C& lcd) : lcd(lcd), anim(false), animdelay(30), skipDisabled(false), focus(true) { }
 
 void fxMenuNav::setAnim(bool on) { anim = on; }
 
 void fxMenuNav::setAnimDelay(byte ms) { animdelay = ms; }
+
+void fxMenuNav::setSkipDisabled(bool on) { skipDisabled = on; }
 
 void fxMenuNav::up() { 
   if (focus) { setPos(pos-1); }
@@ -21,6 +23,15 @@ void fxMenuNav::down() {
 void fxMenuNav::setPos(int idx) {
   byte prevpos = pos;
   byte prevoff = offset;
+
+  if (skipDisabled) {
+    if (idx > pos) { // TODO allow skipping multiple items, handling of last elem
+      if (!(menu->getItem(idx)->isEnabled())) idx++;
+    }
+    else if (idx < pos) {
+      if (!(menu->getItem(idx)->isEnabled())) idx--;
+    }
+  }
   
   pos = constrain(idx, 0, menu->getLength()-1);
   while (pos >= offset + ROWS) { offset++; }
