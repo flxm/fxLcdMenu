@@ -6,7 +6,7 @@ void fxMenu::setEnable(bool on) { enabled = on; }
 bool fxMenu::isEnabled() { return enabled; }
 
 void fxMenu::setType(ItemType t) { type = t; }
-ItemType fxMenu::getType() { return type; }
+fxMenu::ItemType fxMenu::getType() { return type; }
 
 String fxMenu::getTitle() { return title; }
 

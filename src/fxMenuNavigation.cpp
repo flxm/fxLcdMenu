@@ -31,18 +31,18 @@ void fxMenuNav::setPos(int idx) {
 }
 
 void fxMenuNav::select() {
-  ItemType t = menu->getItem(pos)->getType();
+  fxMenu::ItemType t = menu->getItem(pos)->getType();
   
-  if (t == MENU) {
+  if (t == fxMenu::MENU) {
     fxMenuList* x = (fxMenuList*) (menu->getItem(pos));
     enter(x);
   }
 
-  if (t == BACK) {
+  if (t == fxMenu::BACK) {
     back();
   }
 
-  if (t == TOGGLE || t == VALUE) {
+  if (t == fxMenu::TOGGLE || t == fxMenu::VALUE) {
     if (menu->getItem(pos)->isEnabled()) {
       bool ret = menu->getItem(pos)->select();
       focus = ret;
@@ -98,7 +98,7 @@ void fxMenuNav::render() {
     char leadchar = ' ';
     if (i == pos) {
       if (!menu->getItem(i)->isEnabled()) { leadchar = 1; }
-      else if (menu->getItem(i)->getType() == BACK) { leadchar = 2; }
+      else if (menu->getItem(i)->getType() == fxMenu::BACK) { leadchar = 2; }
       else leadchar = 0;
     }
     lcd.write(leadchar);

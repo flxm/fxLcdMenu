@@ -2,22 +2,23 @@
 
 #include <arduino.h>
 
-enum ItemType { TEXT, MENU, BACK, TOGGLE, VALUE };
-
 #define COLS 20
 #define ROWS 2
+
 
 /**
  * Menu base class
  */
 class fxMenu {
 public:
+  enum ItemType { TEXT, MENU, BACK, TOGGLE, VALUE };
+
   fxMenu(String t = "");
 
   void setEnable(bool on);
   bool isEnabled();
   
-  void setType(ItemType t);
+  void setType(fxMenu::ItemType t);
   ItemType getType();
   
   virtual String getTitle();
