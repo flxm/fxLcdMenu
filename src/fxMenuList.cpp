@@ -3,6 +3,7 @@
 fxMenuList::fxMenuList(String t) : fxMenu(t), length(0), pos(0) { type = MENU; }
 
 fxMenuList* fxMenuList::add(fxMenu* i) { items[length++] = i; return this; }
+fxMenuList* fxMenuList::add(fxMenu& i) { items[length++] = &i; return this; }
 
 void fxMenuList::up() { setPos(pos-1); }
 void fxMenuList::down() { setPos(pos+1); }

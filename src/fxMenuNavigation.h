@@ -23,6 +23,7 @@ public:
   void back();
 
   void setMenu(fxMenuList* m, byte pos = 0);
+  void setMenu(fxMenuList& m, byte pos = 0);
   void render();
   
 protected:

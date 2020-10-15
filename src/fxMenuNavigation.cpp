@@ -86,6 +86,10 @@ void fxMenuNav::setMenu(fxMenuList* m, byte pos) {
   render();
 }
 
+void fxMenuNav::setMenu(fxMenuList& m, byte pos) { 
+  setMenu(&m, pos);
+}
+
 void fxMenuNav::render() {
   Serial.println();
 

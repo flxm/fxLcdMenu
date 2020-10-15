@@ -10,6 +10,7 @@ public:
   fxMenuList(String t = "");
 
   fxMenuList* add(fxMenu* i);
+  fxMenuList* add(fxMenu& i);
 
   void up() override;
   void down() override;
