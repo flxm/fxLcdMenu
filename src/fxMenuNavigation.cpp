@@ -57,26 +57,29 @@ void fxMenuNav::enter(fxMenuList* x) {
   prev = menu;
   prevpos = pos;
 
+#define XX 2
+
+
   if (anim) { // move out to left
-    for(byte s=0; s<16; s++) { lcd.scrollDisplayLeft(); delay(animdelay); }
-    for(byte s=0; s<32; s++) { lcd.scrollDisplayRight(); }
+    for(byte s=0; s<COLS/XX; s++) { lcd.scrollDisplayLeft(); delay(animdelay); }
+    for(byte s=0; s<2*COLS/XX; s++) { lcd.scrollDisplayRight(); }
   }
   setMenu(x);
 
   if (anim) { // move in from right
-    for(byte s=0; s<16; s++) { lcd.scrollDisplayLeft(); delay(animdelay); }
+    for(byte s=0; s<COLS/XX; s++) { lcd.scrollDisplayLeft(); delay(animdelay); }
   }    
 }
 
 void fxMenuNav::back() {
   if (anim) { // move out to right
-    for(byte s=0; s<COLS; s++) { lcd.scrollDisplayRight(); delay(animdelay); }
-    for(byte s=0; s<2*COLS; s++) { lcd.scrollDisplayLeft(); }
+    for(byte s=0; s<COLS/XX; s++) { lcd.scrollDisplayRight(); delay(animdelay); }
+    for(byte s=0; s<2*COLS/XX; s++) { lcd.scrollDisplayLeft(); }
   }
   setMenu(prev, prevpos);
 
   if (anim) { // move in from left
-    for(byte s=0; s<COLS; s++) { lcd.scrollDisplayRight(); delay(animdelay); }
+    for(byte s=0; s<COLS/XX; s++) { lcd.scrollDisplayRight(); delay(animdelay); }
   }    
 }
 
